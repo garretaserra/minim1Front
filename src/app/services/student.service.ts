@@ -15,7 +15,7 @@ export class StudentService {
     this.url = new Url();
   }
 
-  getSubjects(): Observable<Student[]>{
+  getStudents(): Observable<Student[]>{
     return this.http.get<Student[]>(this.url.url+'/student/get');
   }
 }
