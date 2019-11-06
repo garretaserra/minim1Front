@@ -1,7 +1,7 @@
 'use strict';
-import {student} from'./Student';
+import {Student} from'./Student';
 
-export class subject {
+export class Subject {
     name: String;
-    students: [student];
+    students: [Student];
 };

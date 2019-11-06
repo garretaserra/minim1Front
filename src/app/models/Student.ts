@@ -1,5 +1,5 @@
 'use strict';
-export class student {
+export class Student {
     name: String;
     address: String;
     phones: [{
