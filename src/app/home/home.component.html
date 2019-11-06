@@ -1,0 +1,13 @@
+<h1>This is a title</h1>
+<div>
+  <table>
+    <th>Subject</th>
+  </table>
+</div>
+<div>
+  <mat-card-content>
+    <mat-list-item *ngFor="let subject of subjects">
+      <p>{{subject.name}}</p>
+    </mat-list-item>
+  </mat-card-content>
+</div>
