@@ -1,13 +1,56 @@
-<h1>This is a title</h1>
-<div>
-  <table>
-    <th>Subject</th>
-  </table>
-</div>
-<div>
-  <mat-card-content>
-    <mat-list-item *ngFor="let subject of subjects">
-      <p>{{subject.name}}</p>
-    </mat-list-item>
-  </mat-card-content>
+<h1>University</h1>
+<div class="row">
+  <div class="column-list">
+    <div class="margin-sides">
+      <p>Subjects</p>
+      <mat-card class="mat-card-list">
+        <mat-list role="list">
+          <mat-list-item *ngFor="let subject of subjects"
+                          class="no-pad list-item"
+                          role="listitem"
+                          (click)="subjectSelect(subject)">
+            <div class="text">
+              <h5>{{subject.name}}</h5>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+  </div>
+  <div class="column-list">
+    <div class="margin-sides">
+      <p *ngIf="currentSubject">Students of {{currentSubject.name}}</p>
+      <p *ngIf="!currentSubject">Students</p>
+      <mat-card class="mat-card-list">
+        <mat-list *ngIf="currentSubject" role="list">
+          <mat-list-item *ngFor="let student of currentSubject.students"
+                         class="no-pad list-item"
+                         role="listitem"
+                          (click)="studentSelect(student)">
+            <div class="text">
+              <h5>{{student.name}}</h5>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+  </div>
+  <div class="column-list">
+    <div class="margin-sides">
+      <p *ngIf="currentStudent">Details of {{currentStudent.name}}</p>
+      <p *ngIf="!currentStudent">Student Details</p>
+      <mat-card>
+        <div *ngIf="currentStudent">
+          <p>{{currentStudent.name}}</p>
+          <p>{{currentStudent.address }}</p>
+          <p>Phones</p>
+          <mat-list-item *ngFor="let phone of currentStudent.phones"
+                         class="no-pad"
+                         role="listitem">
+            <p class="phones">{{phone.description}}: {{phone.number}}</p>
+          </mat-list-item>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </div>

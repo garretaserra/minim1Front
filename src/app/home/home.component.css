@@ -1,0 +1,44 @@
+.no-pad{
+  padding: 0 !important;
+}
+
+.mat-card-list{
+  height: 65vh;
+}
+
+.column-list{
+  float: left;
+  width: 33%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.margin-sides{
+  margin: 10%;
+}
+
+.text{
+  width: 100%;
+  text-align: center;
+}
+
+.list-item{
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(243, 243, 243);
+  margin-bottom: 5px;
+}
+
+.list-item:hover{
+  font-weight: bold;
+  background-color: rgb(243, 243, 243);
+}
+
+.phones{
+  margin: 5px;
+}
