@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Subject} from './../models/Subject';
+import {SubjectService} from "../services/subject.service";
+
 
 @Component({
   selector: 'app-home',
@@ -10,9 +12,10 @@ export class HomeComponent implements OnInit {
 
   subjects: Subject[];
 
-  constructor() { }
+  constructor(private subjectService: SubjectService) { }
 
   ngOnInit() {
+    this.subjectService.getSubjects().subscribe(subjects=>{this.subjects = subjects});
   }
 
 }
