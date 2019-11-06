@@ -8,11 +8,14 @@ import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatButtonModule} from "@angular/material/button";
+import { AddPlayerComponent } from './add-player/add-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AddPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     MatCardModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
