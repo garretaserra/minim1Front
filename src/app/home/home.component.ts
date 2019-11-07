@@ -21,6 +21,10 @@ export class HomeComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.updateInfo();
+  }
+
+  updateInfo(){
     this.subjectService.getSubjects().subscribe(subjects=>{this.subjects = subjects});
   }
 
@@ -33,8 +37,10 @@ export class HomeComponent implements OnInit {
   }
 
   public addPlayer(){
-    const dialogRef = this.dialog.open(AddPlayerComponent);
-    dialogRef.updateSize('30%', '50%');
+    const dialogRef = this.dialog.open(AddPlayerComponent,{
+      width: '50%',
+      height: '70%',
+    });
     dialogRef.afterClosed().subscribe(data=>{
 
     });

@@ -21,7 +21,7 @@
     <div class="margin-sides">
       <p *ngIf="currentSubject">Students of {{currentSubject.name}}</p>
       <p *ngIf="!currentSubject">Students</p>
-      <button mat-raised-button class="add-btn" (click)="addPlayer()">Add Student</button>
+      <button mat-raised-button class="add-btn" (click)="addPlayer()" [disabled]="currentSubject==null">Enroll Student</button>
       <mat-card class="mat-card-list">
         <mat-list *ngIf="currentSubject" role="list">
           <mat-list-item *ngFor="let student of currentSubject.students"

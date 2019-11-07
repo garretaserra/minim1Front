@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
-import { HomeComponent } from './home/home.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import { AddPlayerComponent } from './add-player/add-player.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -23,8 +25,16 @@ import { AddPlayerComponent } from './add-player/add-player.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatListModule,
+    MatDialogModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
+  ],
+  exports:[
+    AddPlayerComponent
+  ],
+  entryComponents:[
+    AddPlayerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
