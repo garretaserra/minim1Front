@@ -14,6 +14,10 @@ import { EnrollPlayerComponent } from './enroll-player/enroll-player.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { NewStudentComponent } from './new-student/new-student.component';
 import { NewSubjectComponent } from './new-subject/new-subject.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -32,13 +36,22 @@ import { NewSubjectComponent } from './new-subject/new-subject.component';
     MatDialogModule,
     HttpClientModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule
   ],
   exports:[
-    EnrollPlayerComponent
+    EnrollPlayerComponent,
+    NewSubjectComponent,
+    NewStudentComponent
   ],
   entryComponents:[
-    EnrollPlayerComponent
+    EnrollPlayerComponent,
+    NewSubjectComponent,
+    NewStudentComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

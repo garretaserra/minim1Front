@@ -1,1 +1,9 @@
-<p>new-subject works!</p>
+<div class="dialog-container">
+  <p>Add a New Subject</p>
+  <mat-form-field>
+    <input matInput placeholder="name" [formControl]="form">
+  </mat-form-field>
+  <button mat-raised-button (click)="addSubject()" class="button-align-left">Enroll</button>
+  <button mat-raised-button (click)="closeDialog()" class="button-align-right" color="warn">Cancel</button>
+</div>
+

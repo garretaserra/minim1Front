@@ -1,0 +1,17 @@
+.button-align-right{
+  right: 0;
+}
+
+.button-align-left{
+  left: 0;
+}
+
+.dialog-container{
+  position: relative;
+  height: 90%;
+}
+
+.mat-raised-button{
+  position: absolute;
+  bottom: 5px;
+}

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
+import {StudentService} from "../services/student.service";
+import {SubjectService} from "../services/subject.service";
+import {Student} from "../models/Student";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-new-subject',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewSubjectComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<NewSubjectComponent>,
+              private subjectService: SubjectService) { };
+
+  form: FormControl = new FormControl();
 
   ngOnInit() {
   }
 
+  async addSubject() {
+    //Create the new subject
+    await this.subjectService.addNewSubject(this.form.value).toPromise();
+    await this.closeDialog()
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }

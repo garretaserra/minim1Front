@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from './../models/Subject';
 import {SubjectService} from "../services/subject.service";
 import {Student} from "../models/Student";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {EnrollPlayerComponent} from '../enroll-player/enroll-player.component';
+import {NewStudentComponent} from "../new-student/new-student.component";
+import {NewSubjectComponent} from "../new-subject/new-subject.component";
 
 
 @Component({
@@ -25,7 +27,11 @@ export class HomeComponent implements OnInit {
   }
 
   updateInfo(){
-    this.subjectService.getSubjects().subscribe(subjects=>{this.subjects = subjects});
+    this.subjectService.getSubjects().subscribe(subjects=>{
+      this.subjects = []; this.subjects = subjects;
+      if(this.currentSubject)
+        this.currentSubject = subjects.find(s => s.name == this.currentSubject.name);
+    });
   }
 
   public subjectSelect(subject){
@@ -36,14 +42,39 @@ export class HomeComponent implements OnInit {
     this.currentStudent = student;
   }
 
-  public addPlayer(){
+  public enrollStudent(){
     const dialogRef = this.dialog.open(EnrollPlayerComponent,{
       width: '50%',
       height: '70%',
     });
-    dialogRef.afterClosed().subscribe(data=>{
-
+    dialogRef.afterClosed().subscribe((data: Student[])=>{
+      //Data will be the array of students that have to be enrolled in the subject (can be empty)
+      if(data) {
+        data.forEach(async(student) => {
+          await this.subjectService.enrollStudent(this.currentSubject.name, student.name).toPromise();
+          this.updateInfo();
+        })
+      }
     });
+    };
+
+  public addStudent(){
+    const dialogRef = this.dialog.open(NewStudentComponent,{
+      width: '50%',
+      height: '70%',
+    });
+    dialogRef.afterClosed().subscribe();
   }
 
+  public addSubject() {
+    const dialogRef = this.dialog.open(NewSubjectComponent, {
+      width: '50%',
+      height: '40%',
+    });
+    dialogRef.afterClosed().subscribe(() => {this.updateInfo()})
+  }
+
+  deleteSubject(subjectName){
+    //this.subjectService.
+  }
 }
