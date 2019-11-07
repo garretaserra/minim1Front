@@ -60,10 +60,10 @@ export class HomeComponent implements OnInit {
 
   public addStudent(){
     const dialogRef = this.dialog.open(NewStudentComponent,{
-      width: '50%',
-      height: '70%',
+      width: '80%',
+      height: '80%',
     });
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe(()=>{this.updateInfo()});
   }
 
   public addSubject() {
