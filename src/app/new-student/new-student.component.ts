@@ -39,7 +39,7 @@ export class NewStudentComponent implements OnInit {
 
   async addStudent() {
     //Create the new student
-    
+    await this.studentService.addNewStudent(this.form.value).toPromise();
     await this.closeDialog()
   }
 
