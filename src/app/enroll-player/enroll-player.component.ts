@@ -13,7 +13,7 @@ export class EnrollPlayerComponent implements OnInit {
   //Array with all the students stored
   students: Student[];
   //Array of booleans that will define if the checkbox for each student is checked
-  checked: boolean[];
+  checked: boolean[] = [];
 
   constructor(public dialogRef: MatDialogRef<EnrollPlayerComponent>,
               private studentService: StudentService) { }
@@ -23,7 +23,9 @@ export class EnrollPlayerComponent implements OnInit {
     this.studentService.getStudents().subscribe(students =>{
       this.students=students;
       //Initialize the array of booleans bounded to the corresponding checkboxes
-      this.checked = [].fill(false, 0, this.students.length);
+      this.students.forEach((student, i)=>{
+        this.checked[i] = false;
+      });
     });
   }
 
@@ -33,9 +35,10 @@ export class EnrollPlayerComponent implements OnInit {
   }
 
   addStudents(){
-    let newStudents: Student[];
+    let newStudents: Student[] = [];
     //Add students to array only if their checkbox is checked
     this.students.forEach((student, i)=>{if(this.checked[i])newStudents.push(student)});
+
     //Return an array of all the students with their checkbox checked
     this.dialogRef.close(newStudents);
   }
