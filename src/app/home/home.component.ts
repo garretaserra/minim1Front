@@ -74,7 +74,8 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {this.updateInfo()})
   }
 
-  deleteSubject(subjectName){
-    //this.subjectService.
+  async deleteSubject(subjectName){
+    await this.subjectService.deleteSubject(subjectName).toPromise();
+    this.updateInfo();
   }
 }
