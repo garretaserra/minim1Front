@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatDialogRef} from "@angular/material/dialog";
 import {StudentService} from "../services/student.service";
 import {Student} from "../models/Student";
 
 @Component({
   selector: 'app-add-player',
-  templateUrl: './add-player.component.html',
-  styleUrls: ['./add-player.component.css']
+  templateUrl: './enroll-player.component.html',
+  styleUrls: ['./enroll-player.component.css']
 })
-export class AddPlayerComponent implements OnInit {
+export class EnrollPlayerComponent implements OnInit {
 
+  //Array with all the students stored
   students: Student[];
+  //Array of booleans that will define if the checkbox for each student is checked
   checked: boolean[];
 
-  constructor(public dialogRef: MatDialogRef<AddPlayerComponent>,
+  constructor(public dialogRef: MatDialogRef<EnrollPlayerComponent>,
               private studentService: StudentService) { }
 
   ngOnInit() {

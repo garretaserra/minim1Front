@@ -3,7 +3,7 @@ import {Subject} from './../models/Subject';
 import {SubjectService} from "../services/subject.service";
 import {Student} from "../models/Student";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
-import {AddPlayerComponent} from '../add-player/add-player.component';
+import {EnrollPlayerComponent} from '../enroll-player/enroll-player.component';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   public addPlayer(){
-    const dialogRef = this.dialog.open(AddPlayerComponent,{
+    const dialogRef = this.dialog.open(EnrollPlayerComponent,{
       width: '50%',
       height: '70%',
     });

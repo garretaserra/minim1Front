@@ -10,14 +10,18 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
-import { AddPlayerComponent } from './add-player/add-player.component';
+import { EnrollPlayerComponent } from './enroll-player/enroll-player.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { NewStudentComponent } from './new-student/new-student.component';
+import { NewSubjectComponent } from './new-subject/new-subject.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AddPlayerComponent
+    EnrollPlayerComponent,
+    NewStudentComponent,
+    NewSubjectComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +35,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatCheckboxModule
   ],
   exports:[
-    AddPlayerComponent
+    EnrollPlayerComponent
   ],
   entryComponents:[
-    AddPlayerComponent
+    EnrollPlayerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
