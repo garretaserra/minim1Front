@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 import {SubjectService} from "../services/subject.service";
 import {StudentService} from "../services/student.service";
@@ -17,15 +17,26 @@ export class NewStudentComponent implements OnInit {
 
   items: FormArray;
   form: FormGroup = this.fb.group({
-    name: '',
-    address: '',
+    name: ['', Validators.compose(
+      [Validators.required,
+      Validators.minLength(3),
+      Validators.pattern('[a-zA-Z]+')])],
+    address: ['', Validators.compose([Validators.required])],
     phones: this.fb.array([this.createPhone()])
   });
 
+  validationMessages: any = {
+    name:[
+      {type: 'required', message:'Name is required'},
+      {type: 'minlength', message:'Name must be longer than 2 characters'},
+      {type: 'pattern', message:'The name must only be characters'}
+    ]
+  };
+
   createPhone(): FormGroup{
     return this.fb.group({
-      description: '',
-      number: ''
+      description: ['', Validators.compose([Validators.required])],
+      number: ['', Validators.compose([Validators.required])],
     })
   }
 
@@ -38,9 +49,14 @@ export class NewStudentComponent implements OnInit {
   }
 
   async addStudent() {
-    //Create the new student
-    await this.studentService.addNewStudent(this.form.value).toPromise();
-    await this.closeDialog()
+    if(this.form.valid) {
+      //Create the new student
+      await this.studentService.addNewStudent(this.form.value).toPromise();
+      await this.closeDialog()
+    }
+    else{
+      console.log('Validation Failed');
+    }
   }
 
   closeDialog() {

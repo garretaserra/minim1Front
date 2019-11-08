@@ -4,6 +4,13 @@
     <div class="col-2">
       <mat-form-field>
         <input matInput placeholder="name" formControlName="name">
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.name">
+            <div class="alert alert-danger" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
       </mat-form-field>
     </div>
     <div class="col-2">
