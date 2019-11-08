@@ -35,6 +35,9 @@
             <div class="text">
               <h5>{{student.name}}</h5>
             </div>
+            <div class="pointer">
+              <mat-icon (click)="dropSubject(currentSubject.name, student.name)">delete</mat-icon>
+            </div>
           </mat-list-item>
         </mat-list>
       </mat-card>

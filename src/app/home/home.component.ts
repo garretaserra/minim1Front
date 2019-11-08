@@ -75,7 +75,14 @@ export class HomeComponent implements OnInit {
   }
 
   async deleteSubject(subjectName){
-    await this.subjectService.deleteSubject(subjectName).toPromise();
+    if(confirm('Are you sure you want to delete '+subjectName)) {
+      await this.subjectService.deleteSubject(subjectName).toPromise();
+      this.updateInfo();
+    }
+  }
+
+  async dropSubject(subjectName, studentName){
+    await this.subjectService.dropSubject(subjectName, studentName).toPromise();
     this.updateInfo();
   }
 }
