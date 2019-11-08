@@ -16,17 +16,26 @@ export class NewSubjectComponent implements OnInit {
               private subjectService: SubjectService) { };
 
   form: FormControl = new FormControl();
+  degreeOptions: string[] = ['telecos', 'telematica', 'aeroespacial'];
+  option: string;
 
   ngOnInit() {
   }
 
   async addSubject() {
+    console.log(this.form);
     //Create the new subject
-    await this.subjectService.addNewSubject(this.form.value).toPromise();
+    await this.subjectService.addNewSubject(this.form.value, this.option).toPromise();
     await this.closeDialog()
   }
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  setSelection(event){
+    if(event.isUserInput) {
+      this.option = event.source.value;
+    }
   }
 }

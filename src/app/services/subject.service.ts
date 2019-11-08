@@ -24,8 +24,8 @@ export class SubjectService {
     return this.http.post(this.url+'/subject/addNew',{subject:{name: subjectName},student:{name: studentName}});
   }
 
-  addNewSubject(subjectName){
-    return this.http.post(this.url+'/subject/add', {subject: {name: subjectName, students: []}});
+  addNewSubject(subjectName, degree){
+    return this.http.post(this.url+'/subject/add', {subject: {name: subjectName, degree: degree, students: []}});
   }
 
   deleteSubject(subjectName){

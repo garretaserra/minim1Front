@@ -2,6 +2,12 @@
   <p>Add a New Subject</p>
   <mat-form-field>
     <input matInput placeholder="name" [formControl]="form">
+    <p></p>
+    <mat-select>
+      <mat-option *ngFor="let selectedOption of degreeOptions" [value]="selectedOption" (onSelectionChange)="setSelection($event)">
+        {{selectedOption}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <button mat-raised-button (click)="addSubject()" class="button-align-left">Enroll</button>
   <button mat-raised-button (click)="closeDialog()" class="button-align-right" color="warn">Cancel</button>
