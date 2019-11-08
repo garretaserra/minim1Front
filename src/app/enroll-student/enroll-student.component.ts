@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {StudentService} from "../services/student.service";
 import {Student} from "../models/Student";
+import {SubjectService} from "../services/subject.service";
 
 @Component({
   selector: 'app-add-player',
@@ -17,11 +18,12 @@ export class EnrollStudentComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EnrollStudentComponent>,
               private studentService: StudentService,
+              private subjectService: SubjectService,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     //Get all students on the database
-    this.studentService.getStudents().subscribe(students =>{
+    this.subjectService.getStudentsNotEnrolled(this.data.subject.name).subscribe(students =>{
       this.students=students;
       //Initialize the array of booleans bounded to the corresponding checkboxes
       this.students.forEach((student, i)=>{

@@ -27,21 +27,30 @@ export class HomeComponent implements OnInit {
   }
 
   updateInfo(){
+    /*
+      This function will update the information that is shown on the web page
+      it will be called every time that information on the database is changed
+      so that the user doesn't have to refresh the page to view the change
+     */
     this.subjectService.getSubjects().subscribe(subjects=>{
-      this.subjects = []; this.subjects = subjects;
+      this.subjects = subjects;
+      //If current subject exists update the information as well
       if(this.currentSubject)
         this.currentSubject = subjects.find(s => s.name == this.currentSubject.name);
     });
   }
 
+  //Save the selected subject
   public subjectSelect(subject){
     this.currentSubject = subject;
   }
 
+  //Save the selected student
   public studentSelect(student){
     this.currentStudent = student;
   }
 
+  //Opens Dialog
   public enrollStudent(){
     const dialogRef = this.dialog.open(EnrollStudentComponent,{
       width: '50%',
@@ -50,6 +59,7 @@ export class HomeComponent implements OnInit {
         subject: this.currentSubject
       }
     });
+    //When Dialog Closes
     dialogRef.afterClosed().subscribe((data: Student[])=>{
       //Data will be the array of students that have to be enrolled in the subject (can be empty)
       if(data) {

@@ -3,6 +3,7 @@ import {Url} from './url';
 import { HttpClient } from '@angular/common/http';
 import {Subject} from "../models/Subject";
 import {Observable} from "rxjs";
+import {Student} from "../models/Student";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class SubjectService {
 
   dropSubject(subjectName, studentName){
     return this.http.get(this.url+'/subject/dropSubject?subject='+subjectName+'&student='+studentName);
+  }
+
+  getStudentsNotEnrolled(subjectName): Observable<Student[]>{
+    return this.http.get<Student[]>(this.url+'/subject/studentsNotEnrolled?subject='+subjectName);
   }
 }
