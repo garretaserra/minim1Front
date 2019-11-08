@@ -30,4 +30,8 @@ export class SubjectService {
   deleteSubject(subjectName){
     return this.http.get(this.url.url+'/subject/delete/'+subjectName);
   }
+
+  dropSubject(subjectName, studentName){
+    return this.http.get(this.url.url+'/subject/dropSubject?subject='+subjectName+'&student='+studentName);
+  }
 }

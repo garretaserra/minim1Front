@@ -53,3 +53,7 @@
 .pointer:hover{
   cursor: pointer;
 }
+
+.delete-padding{
+  padding: 10px;
+}

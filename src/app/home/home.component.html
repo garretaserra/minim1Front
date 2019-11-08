@@ -8,12 +8,11 @@
         <mat-list role="list">
           <mat-list-item *ngFor="let subject of subjects"
                           class=""
-                          role="listitem"
-                          (click)="subjectSelect(subject)">
-            <div class="text pointer list-item">
+                          role="listitem">
+            <div class="text pointer list-item" (click)="subjectSelect(subject)">
               <a>{{subject.name}}</a>
             </div>
-            <div class="pointer">
+            <div class="pointer delete-padding">
               <mat-icon (click)="deleteSubject(subject.name)">delete</mat-icon>
             </div>
           </mat-list-item>
@@ -29,11 +28,10 @@
       <mat-card class="mat-card-list">
         <mat-list *ngIf="currentSubject" role="list">
           <mat-list-item *ngFor="let student of currentSubject.students"
-                         class="no-pad list-item"
-                         role="listitem"
-                          (click)="studentSelect(student)">
-            <div class="text">
-              <h5>{{student.name}}</h5>
+                         class=""
+                         role="listitem">
+            <div class="text pointer list-item delete-padding" (click)="studentSelect(student)">
+              <a>{{student.name}}</a>
             </div>
             <div class="pointer">
               <mat-icon (click)="dropSubject(currentSubject.name, student.name)">delete</mat-icon>
