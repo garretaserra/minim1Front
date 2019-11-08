@@ -39,4 +39,8 @@ export class SubjectService {
   getStudentsNotEnrolled(subjectName): Observable<Student[]>{
     return this.http.get<Student[]>(this.url+'/subject/studentsNotEnrolled?subject='+subjectName);
   }
+
+  getSubjectsByDegree(degreeName): Observable<Subject[]>{
+    return this.http.get<Subject[]>(this.url+'/subject/getByDegree?degree='+degreeName);
+  }
 }

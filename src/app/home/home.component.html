@@ -1,9 +1,16 @@
-<h1>University</h1>
+<h1 (click)="onSelectChange()">University</h1>
 <div class="row">
   <div class="column-list">
     <div class="margin-sides">
       <p>Subjects</p>
       <button mat-raised-button class="add-btn" (click)="addSubject()">Add Subject</button>
+      <mat-form-field>
+        <mat-select>
+          <mat-option *ngFor="let selectedOption of degreeOptions" [value]="selectedOption" (onSelectionChange)="onSelectChange($event)">
+            {{selectedOption}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-card class="mat-card-list">
         <mat-list role="list">
           <mat-list-item *ngFor="let subject of subjects"

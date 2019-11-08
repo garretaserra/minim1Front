@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   subjects: Subject[];
   currentSubject: Subject;
   currentStudent: Student;
+  degreeOptions: string[] = ['all', 'telecos', 'telematica', 'aeroespacial'];
 
   constructor(private subjectService: SubjectService,
               public dialog: MatDialog) { }
@@ -97,5 +98,16 @@ export class HomeComponent implements OnInit {
   async dropSubject(subjectName, studentName){
     await this.subjectService.dropSubject(subjectName, studentName).toPromise();
     this.updateInfo();
+  }
+
+  async onSelectChange(event){
+    if(event.isUserInput) {
+      if(event.source.value==="all") {
+        this.updateInfo();
+      }
+      else {
+        this.subjects = await this.subjectService.getSubjectsByDegree(event.source.value).toPromise();
+      }
+    }
   }
 }
