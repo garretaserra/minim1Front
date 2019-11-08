@@ -3,7 +3,7 @@ import {Subject} from './../models/Subject';
 import {SubjectService} from "../services/subject.service";
 import {Student} from "../models/Student";
 import {MatDialog} from '@angular/material';
-import {EnrollPlayerComponent} from '../enroll-player/enroll-player.component';
+import {EnrollStudentComponent} from '../enroll-student/enroll-student.component';
 import {NewStudentComponent} from "../new-student/new-student.component";
 import {NewSubjectComponent} from "../new-subject/new-subject.component";
 
@@ -43,9 +43,12 @@ export class HomeComponent implements OnInit {
   }
 
   public enrollStudent(){
-    const dialogRef = this.dialog.open(EnrollPlayerComponent,{
+    const dialogRef = this.dialog.open(EnrollStudentComponent,{
       width: '50%',
       height: '70%',
+      data:{
+        subject: this.currentSubject
+      }
     });
     dialogRef.afterClosed().subscribe((data: Student[])=>{
       //Data will be the array of students that have to be enrolled in the subject (can be empty)

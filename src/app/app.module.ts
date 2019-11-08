@@ -10,7 +10,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
-import { EnrollPlayerComponent } from './enroll-player/enroll-player.component';
+import { EnrollStudentComponent } from './enroll-student/enroll-student.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { NewStudentComponent } from './new-student/new-student.component';
 import { NewSubjectComponent } from './new-subject/new-subject.component';
@@ -23,7 +23,7 @@ import {MatIconModule} from "@angular/material/icon";
   declarations: [
     AppComponent,
     HomeComponent,
-    EnrollPlayerComponent,
+    EnrollStudentComponent,
     NewStudentComponent,
     NewSubjectComponent
   ],
@@ -44,12 +44,12 @@ import {MatIconModule} from "@angular/material/icon";
     MatIconModule
   ],
   exports:[
-    EnrollPlayerComponent,
+    EnrollStudentComponent,
     NewSubjectComponent,
     NewStudentComponent
   ],
   entryComponents:[
-    EnrollPlayerComponent,
+    EnrollStudentComponent,
     NewSubjectComponent,
     NewStudentComponent
   ],
