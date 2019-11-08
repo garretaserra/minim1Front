@@ -9,29 +9,29 @@ import {Observable} from "rxjs";
 })
 export class SubjectService {
 
-  url: Url;
+  url: string;
 
   constructor(private http: HttpClient) {
-    this.url = new Url();
+    this.url = new Url().url;
   }
 
   getSubjects(): Observable<Subject[]>{
-    return this.http.get<Subject[]>(this.url.url+'/subject/get');
+    return this.http.get<Subject[]>(this.url+'/subject/get');
   }
 
   enrollStudent(subjectName, studentName){
-    return this.http.post(this.url.url+'/subject/addNew',{subject:{name: subjectName},student:{name: studentName}});
+    return this.http.post(this.url+'/subject/addNew',{subject:{name: subjectName},student:{name: studentName}});
   }
 
   addNewSubject(subjectName){
-    return this.http.post(this.url.url+'/subject/add', {subject: {name: subjectName, students: []}});
+    return this.http.post(this.url+'/subject/add', {subject: {name: subjectName, students: []}});
   }
 
   deleteSubject(subjectName){
-    return this.http.get(this.url.url+'/subject/delete/'+subjectName);
+    return this.http.get(this.url+'/subject/delete/'+subjectName);
   }
 
   dropSubject(subjectName, studentName){
-    return this.http.get(this.url.url+'/subject/dropSubject?subject='+subjectName+'&student='+studentName);
+    return this.http.get(this.url+'/subject/dropSubject?subject='+subjectName+'&student='+studentName);
   }
 }
